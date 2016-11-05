@@ -6,17 +6,17 @@ include setup.mk
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -std=gnu99 -O2 -ggdb -fomit-frame-pointer -falign-functions=16 -fsingle-precision-constant
+  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16 -fsingle-precision-constant 
 endif
 
 # C specific options here (added to USE_OPT).
 ifeq ($(USE_COPT),)
-  USE_COPT = 
+  USE_COPT = -std=gnu99
 endif
 
 # C++ specific options here (added to USE_OPT).
 ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
+  USE_CPPOPT = -fno-rtti 
 endif
 
 # Enable this if you want the linker to remove unused code and data
@@ -31,7 +31,7 @@ endif
 
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
+  USE_VERBOSE_COMPILE = yes
 endif
 
 #
@@ -106,13 +106,14 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/syscalls.c \
        $(CHIBIOS)/os/various/chprintf.c \
        $(VEXFWSRC) \
-       $(VEXOPTSRC) \
-       $(VEXUSERSRC) \
-       main.c
+       $(VEXOPTSRC)
+#       $(VEXUSERSRC) \
+#       main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CPPSRC =
+CPPSRC = $(VEXUSERSRC) \
+	 main.cpp
 
 # C sources to be compiled in ARM mode regardless of the global setting.
 # NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
@@ -158,8 +159,8 @@ CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
-LD   = $(TRGT)gcc
-#LD   = $(TRGT)g++
+#D   = $(TRGT)gcc
+LD   = $(TRGT)g++
 CP   = $(TRGT)objcopy
 AS   = $(TRGT)gcc -x assembler-with-cpp
 OD   = $(TRGT)objdump
@@ -176,7 +177,7 @@ TOPT = -mthumb -DTHUMB
 CWARN = -Wall -Wextra -Wstrict-prototypes
 
 # Define C++ warning options here
-CPPWARN = -Wall -Wextra
+CPPWARN = -Wall -Wextra -Wno-write-strings
 
 #
 # Compiler settings

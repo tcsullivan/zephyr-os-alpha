@@ -8,8 +8,8 @@
 #CONVEX_OPT  = yes
 
 # User C code files
-VEXUSERSRC = vexuser.c
+VEXUSERSRC = vexuser.cpp src/motor.cpp 
 
 # Uncomment and add/modify user include files
-#VEXUSERINC = myfile.h
+VEXUSERINC = include/
 
