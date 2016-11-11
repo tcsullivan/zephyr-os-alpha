@@ -1,4 +1,4 @@
-.cproject
-.dep
-.project
-bin/*
+.dep/*
+build/*
+debug/*
+
