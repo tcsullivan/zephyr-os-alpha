@@ -9,6 +9,7 @@ An attempt to create our own system for the robot.
     * Probably really fast/efficient
 
 As of 11/11 this OS (?) can:
+
     * write digital pins and set their mode
     * write text and numbers to the lcd
     * set motors 2-9
