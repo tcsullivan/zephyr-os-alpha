@@ -198,4 +198,8 @@ namespace spi {
 		return vexSpiData.rxdata.pak.batt2 * 59; 
 	}
 
+	int getState(void) {
+		return vexSpiData.rxdata.pak.ctl;
+	}
+
 }

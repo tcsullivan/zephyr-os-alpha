@@ -166,6 +166,8 @@ namespace spi {
 
 	int getBatteryMain(void);
 	int getBatteryBackup(void);
+
+	int getState(void);
 }
 
 #endif  // __VEXSPI__

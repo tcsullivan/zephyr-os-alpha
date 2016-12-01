@@ -220,6 +220,6 @@ include $(RULESPATH)/rules.mk
 # upload target
 upload:
 	@echo "Uploading..."
-	@sudo cortexflash -w build/ch.hex /dev/ttyUSB0
+	@sudo cortexflash -w build/zephyr.hex /dev/ttyUSB0
 	@echo
 	@echo "Done."
